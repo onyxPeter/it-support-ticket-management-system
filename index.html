@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Support Ticket System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>IT Support Desk</h1>
+        <p>Report a technical issue and track its progress.</p>
+    </header>
+
+    <main>
+        <section class="ticket-form">
+            <h2>Submit a Support Ticket</h2>
+
+            <form id="ticketForm">
+                <label for="employeeName">Your Name</label>
+                <input
+                    type="text"
+                    id="employeeName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <label for="issueTitle">Issue Title</label>
+                <input
+                    type="text"
+                    id="issueTitle"
+                    placeholder="e.g. Wi-Fi is not working"
+                    required
+                >
+
+                <label for="category">Issue Category</label>
+                <select id="category" required>
+                    <option value="">Select a category</option>
+                    <option value="Networking">Networking</option>
+                    <option value="Hardware">Hardware</option>
+                    <option value="Software">Software</option>
+                    <option value="Account Access">Account Access</option>
+                    <option value="Printer">Printer</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="description">Describe the Problem</label>
+                <textarea
+                    id="description"
+                    placeholder="Explain what happened..."
+                    rows="4"
+                    required
+                ></textarea>
+
+                <label for="priority">Priority</label>
+                <select id="priority" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="High">High</option>
+                </select>
+
+                <button type="submit">Submit Ticket</button>
+            </form>
+        </section>
+
+        <section class="ticket-list">
+        <div class="dashboard-stats">
+                <div class="stat-card">
+                     <h3>Total Tickets</h3>
+                     <p id="totalTickets">0</p>
+             </div>
+
+            <div class="stat-card">
+                <h3>Open Tickets</h3>
+                <p id="openTickets">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Resolved Tickets</h3>
+                <p id="resolvedTickets">0</p>
+            </div>
+        </div>
+            <h2>Support Tickets</h2>
+            <div class="ticket-search">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by ticket title or ID..."
+                >
+
+                <select id="priorityFilter">
+                    <option value="All">All Priorities</option>
+                    <option value="High">High Priority</option>
+                    <option value="Medium">Medium Priority</option>
+                    <option value="Low">Low Priority</option>
+                </select>
+            </div>
+            <div class="ticket-filters">
+                <button class="filter-btn active" data-filter="All">All</button>
+                <button class="filter-btn" data-filter="Open">Open</button>
+                <button class="filter-btn" data-filter="In Progress">In Progress</button>
+                <button class="filter-btn" data-filter="Resolved">Resolved</button>
+            </div>
+
+            <div id="ticketsContainer">
+                <p id="emptyMessage">No tickets submitted yet.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>IT Support Ticket Management System | Portfolio Project</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
