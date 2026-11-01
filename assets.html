@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Desk | Asset Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">IT</div>
+            <div>
+                <h2>IT Desk</h2>
+                <span>Support Management</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <p class="nav-label">WORKSPACE</p>
+
+            <a href="index.html" class="nav-link">
+                <span>▦</span> Overview
+            </a>
+
+            <a href="tickets.html" class="nav-link">
+                <span>▤</span> Tickets
+            </a>
+
+            <p class="nav-label">MANAGEMENT</p>
+
+            <a href="technicians.html" class="nav-link">
+                <span>♙</span> Technicians
+            </a>
+
+            <a href="assets.html" class="nav-link active">
+                <span>▣</span> Assets
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                <span>▥</span> Reports
+            </a>
+
+            <p class="nav-label">SYSTEM</p>
+
+            <a href="#" class="nav-link">
+                <span>⚙</span> Settings
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="profile-avatar">AD</div>
+            <div class="profile-info">
+                <strong>Administrator</strong>
+                <span>System Admin</span>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <p class="breadcrumb">Management / Assets</p>
+                <h1>IT Asset Management</h1>
+            </div>
+
+            <div class="topbar-right">
+
+                <span class="system-status">
+                    <span class="status-dot"></span>
+                    System operational
+                </span>
+
+                <div class="topbar-avatar">AD</div>
+
+            </div>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+            <!-- INTRODUCTION -->
+            <div class="welcome-section">
+
+                <div>
+                    <h2>Equipment Inventory</h2>
+                    <p>
+                        Register, monitor, and maintain your organization's
+                        IT equipment.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- ASSET STATISTICS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-heading">
+                        <span>Total Assets</span>
+                        <span class="stat-icon blue">▣</span>
+                    </div>
+
+                    <h2 id="totalAssets">0</h2>
+
+                    <p>Registered equipment</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-heading">
+                        <span>Active Assets</span>
+                        <span class="stat-icon green">✓</span>
+                    </div>
+
+                    <h2 id="activeAssets">0</h2>
+
+                    <p>Currently in use</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-heading">
+                        <span>Maintenance</span>
+                        <span class="stat-icon orange">⚙</span>
+                    </div>
+
+                    <h2 id="maintenanceAssets">0</h2>
+
+                    <p>Under maintenance</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-heading">
+                        <span>Retired Assets</span>
+                        <span class="stat-icon purple">◷</span>
+                    </div>
+
+                    <h2 id="retiredAssets">0</h2>
+
+                    <p>No longer in service</p>
+
+                </div>
+
+            </section>
+
+
+            <!-- REGISTER ASSET -->
+            <section class="form-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Register New Asset</h2>
+                        <p>
+                            Add equipment details to your inventory.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-card">
+
+                    <form id="assetForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="assetName">
+                                    Asset Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="assetName"
+                                    placeholder="e.g. HP EliteBook 840 G6"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="assetCategory">
+                                    Asset Category
+                                </label>
+
+                                <select id="assetCategory" required>
+
+                                    <option value="">
+                                        Select category
+                                    </option>
+
+                                    <option value="Computer">
+                                        Computer
+                                    </option>
+
+                                    <option value="Laptop">
+                                        Laptop
+                                    </option>
+
+                                    <option value="Printer">
+                                        Printer
+                                    </option>
+
+                                    <option value="Networking">
+                                        Networking Equipment
+                                    </option>
+
+                                    <option value="Server">
+                                        Server
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="serialNumber">
+                                    Serial Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="serialNumber"
+                                    placeholder="Enter serial number"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="assignedTo">
+                                    Assigned To
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="assignedTo"
+                                    placeholder="Employee or department"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="assetCondition">
+                                    Asset Condition
+                                </label>
+
+                                <select id="assetCondition" required>
+
+                                    <option value="Good">Good</option>
+                                    <option value="Excellent">Excellent</option>
+                                    <option value="Fair">Fair</option>
+                                    <option value="Poor">Poor</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="assetStatus">
+                                    Asset Status
+                                </label>
+
+                                <select id="assetStatus" required>
+
+                                    <option value="Active">Active</option>
+                                    <option value="Maintenance">Maintenance</option>
+                                    <option value="Retired">Retired</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit" class="primary-button">
+                            + Register Asset
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- ASSET INVENTORY -->
+            <section class="tickets-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Registered Assets</h2>
+                        <p>
+                            View and manage all registered IT equipment.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="assetsContainer">
+
+                    <div class="empty-state">
+                        No assets registered yet.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAINTENANCE INFORMATION -->
+            <section class="analytics-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Asset Maintenance</h2>
+                        <p>
+                            Keep track of equipment servicing and repairs.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="analytics-placeholder">
+
+                    <div class="chart-symbol">⚙</div>
+
+                    <h3>Maintenance records</h3>
+
+                    <p>
+                        Maintenance history is available through individual
+                        asset records.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer>
+                IT Desk Management System · Portfolio Project
+            </footer>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- JAVASCRIPT MODULES -->
+<script src="js/storage.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/assets.js"></script>
+<script src="js/notifications.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        window.Dashboard.initialize();
+
+        window.AssetManager.initialize();
+
+        window.NotificationManager.initialize();
+
+    });
+</script>
+
+</body>
+</html>

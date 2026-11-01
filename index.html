@@ -1,118 +1,411 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Support Ticket System</title>
+
+    <title>IT Desk | Dashboard</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-        <h1>IT Support Desk</h1>
-        <p>Report a technical issue and track its progress.</p>
-    </header>
+    <div class="app-layout">
 
-    <main>
-        <section class="ticket-form">
-            <h2>Submit a Support Ticket</h2>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
 
-            <form id="ticketForm">
-                <label for="employeeName">Your Name</label>
-                <input
-                    type="text"
-                    id="employeeName"
-                    placeholder="Enter your name"
-                    required
-                >
+            <div class="brand">
+                <div class="brand-icon">IT</div>
 
-                <label for="issueTitle">Issue Title</label>
-                <input
-                    type="text"
-                    id="issueTitle"
-                    placeholder="e.g. Wi-Fi is not working"
-                    required
-                >
-
-                <label for="category">Issue Category</label>
-                <select id="category" required>
-                    <option value="">Select a category</option>
-                    <option value="Networking">Networking</option>
-                    <option value="Hardware">Hardware</option>
-                    <option value="Software">Software</option>
-                    <option value="Account Access">Account Access</option>
-                    <option value="Printer">Printer</option>
-                    <option value="Other">Other</option>
-                </select>
-
-                <label for="description">Describe the Problem</label>
-                <textarea
-                    id="description"
-                    placeholder="Explain what happened..."
-                    rows="4"
-                    required
-                ></textarea>
-
-                <label for="priority">Priority</label>
-                <select id="priority" required>
-                    <option value="Low">Low</option>
-                    <option value="Medium" selected>Medium</option>
-                    <option value="High">High</option>
-                </select>
-
-                <button type="submit">Submit Ticket</button>
-            </form>
-        </section>
-
-        <section class="ticket-list">
-        <div class="dashboard-stats">
-                <div class="stat-card">
-                     <h3>Total Tickets</h3>
-                     <p id="totalTickets">0</p>
-             </div>
-
-            <div class="stat-card">
-                <h3>Open Tickets</h3>
-                <p id="openTickets">0</p>
+                <div>
+                    <h2>IT Desk</h2>
+                    <span>Support Management</span>
+                </div>
             </div>
 
-            <div class="stat-card">
-                <h3>Resolved Tickets</h3>
-                <p id="resolvedTickets">0</p>
-            </div>
-        </div>
-            <h2>Support Tickets</h2>
-            <div class="ticket-search">
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search by ticket title or ID..."
-                >
+            <nav class="navigation">
 
-                <select id="priorityFilter">
-                    <option value="All">All Priorities</option>
-                    <option value="High">High Priority</option>
-                    <option value="Medium">Medium Priority</option>
-                    <option value="Low">Low Priority</option>
-                </select>
-            </div>
-            <div class="ticket-filters">
-                <button class="filter-btn active" data-filter="All">All</button>
-                <button class="filter-btn" data-filter="Open">Open</button>
-                <button class="filter-btn" data-filter="In Progress">In Progress</button>
-                <button class="filter-btn" data-filter="Resolved">Resolved</button>
+                <p class="nav-label">WORKSPACE</p>
+
+                <a href="index.html" class="nav-link active">
+                    <span>▦</span> Overview
+                </a>
+
+                <a href="tickets.html" class="nav-link">
+                    <span>▤</span> Tickets
+                </a>
+
+                <p class="nav-label">MANAGEMENT</p>
+
+                <a href="technicians.html" class="nav-link">
+                    <span>♙</span> Technicians
+                </a>
+
+                <a href="assets.html" class="nav-link">
+                    <span>▣</span> Assets
+                </a>
+
+                <a href="reports.html" class="nav-link">
+                    <span>▥</span> Reports
+                </a>
+
+                <p class="nav-label">SYSTEM</p>
+
+                <a href="#" class="nav-link">
+                    <span>⚙</span> Settings
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+
+                <div class="profile-avatar">AD</div>
+
+                <div class="profile-info">
+                    <strong>Administrator</strong>
+                    <span>System Admin</span>
+                </div>
+
             </div>
 
-            <div id="ticketsContainer">
-                <p id="emptyMessage">No tickets submitted yet.</p>
-            </div>
-        </section>
-    </main>
+        </aside>
 
-    <footer>
-        <p>IT Support Ticket Management System | Portfolio Project</p>
-    </footer>
 
-    <script src="script.js"></script>
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div>
+                    <p class="breadcrumb">Workspace / Overview</p>
+                    <h1>Dashboard</h1>
+                </div>
+
+                <div class="topbar-right">
+
+                    <span class="system-status">
+                        <span class="status-dot"></span>
+                        System operational
+                    </span>
+
+                    <div class="topbar-avatar">AD</div>
+
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD CONTENT -->
+            <section class="dashboard-content">
+
+                <!-- WELCOME SECTION -->
+                <div class="welcome-section">
+
+                    <div>
+                        <h2>Welcome back, Administrator</h2>
+                        <p>
+                            Here's what's happening with your IT support desk.
+                        </p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        id="newTicketButton"
+                    >
+                        + New Ticket
+                    </button>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+                <section class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-heading">
+                            <span>Total Tickets</span>
+                            <span class="stat-icon blue">▤</span>
+                        </div>
+
+                        <h2 id="totalTickets">0</h2>
+
+                        <p>All submitted tickets</p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-heading">
+                            <span>Open Tickets</span>
+                            <span class="stat-icon orange">◷</span>
+                        </div>
+
+                        <h2 id="openTickets">0</h2>
+
+                        <p>Awaiting attention</p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-heading">
+                            <span>In Progress</span>
+                            <span class="stat-icon purple">↻</span>
+                        </div>
+
+                        <h2 id="progressTickets">0</h2>
+
+                        <p>Currently being handled</p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-heading">
+                            <span>Resolved Tickets</span>
+                            <span class="stat-icon green">✓</span>
+                        </div>
+
+                        <h2 id="resolvedTickets">0</h2>
+
+                        <p>Successfully completed</p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- TICKET ANALYTICS -->
+                <section class="analytics-card">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <h2>Ticket Analytics</h2>
+                            <p>Overview of support activity</p>
+                        </div>
+
+                    </div>
+
+                    <div class="analytics-placeholder">
+
+                        <div class="chart-symbol">▥</div>
+
+                        <h3>Ticket performance insights</h3>
+
+                        <p>
+                            Your ticket analytics will appear here.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SLA MONITORING -->
+                <section class="sla-section">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <h2>SLA Monitoring</h2>
+
+                            <p>
+                                Monitor ticket deadlines and response targets.
+                            </p>
+                        </div>
+
+                        <span class="sla-section-label">
+                            Live monitoring
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="slaAlert"
+                        class="sla-alert sla-alert-good"
+                    >
+                        No active tickets are overdue.
+                    </div>
+
+
+                    <div class="sla-summary-grid">
+
+                        <div class="sla-summary-card">
+                            <span>Active Tickets</span>
+                            <strong id="slaTotalTickets">0</strong>
+                            <small>Awaiting resolution</small>
+                        </div>
+
+
+                        <div class="sla-summary-card">
+                            <span>Overdue Tickets</span>
+                            <strong id="slaOverdueTickets">0</strong>
+                            <small>Deadline exceeded</small>
+                        </div>
+
+
+                        <div class="sla-summary-card">
+                            <span>Due Soon</span>
+                            <strong id="slaDueSoonTickets">0</strong>
+                            <small>Approaching deadline</small>
+                        </div>
+
+
+                        <div class="sla-summary-card">
+                            <span>Within SLA</span>
+                            <strong id="slaOnTrackTickets">0</strong>
+                            <small>Within target time</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="sla-information">
+
+                        <h3>Response Time Targets</h3>
+
+                        <p>
+                            Tickets are assigned response targets based on their priority.
+                        </p>
+
+                        <div class="sla-target-list">
+
+                            <span>
+                                Critical priority
+                                <strong>4 hours</strong>
+                            </span>
+
+                            <span>
+                                High priority
+                                <strong>8 hours</strong>
+                            </span>
+
+                            <span>
+                                Medium priority
+                                <strong>24 hours</strong>
+                            </span>
+
+                            <span>
+                                Low priority
+                                <strong>48 hours</strong>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- QUICK NAVIGATION -->
+                <section class="analytics-card">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <h2>Management Workspace</h2>
+
+                            <p>
+                                Access other areas of your IT support system.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="management-links">
+
+                        <a href="tickets.html" class="management-link">
+                            <span>▤</span>
+
+                            <div>
+                                <strong>Manage Tickets</strong>
+                                <p>View and manage support requests.</p>
+                            </div>
+                        </a>
+
+
+                        <a href="technicians.html" class="management-link">
+                            <span>♙</span>
+
+                            <div>
+                                <strong>Manage Technicians</strong>
+                                <p>Manage your IT support team.</p>
+                            </div>
+                        </a>
+
+
+                        <a href="assets.html" class="management-link">
+                            <span>▣</span>
+
+                            <div>
+                                <strong>IT Assets</strong>
+                                <p>Manage organizational equipment.</p>
+                            </div>
+                        </a>
+
+
+                        <a href="reports.html" class="management-link">
+                            <span>▥</span>
+
+                            <div>
+                                <strong>View Reports</strong>
+                                <p>Explore performance and ticket reports.</p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FOOTER -->
+                <footer>
+                    IT Desk Management System · Portfolio Project
+                </footer>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT MODULES -->
+
+    <script src="js/storage.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/notifications.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            window.Dashboard.initialize();
+
+            window.NotificationManager.initialize();
+
+            const newTicketButton = document.getElementById(
+                "newTicketButton"
+            );
+
+            if (newTicketButton) {
+                newTicketButton.addEventListener("click", () => {
+                    window.location.href = "tickets.html#new-ticket";
+                });
+            }
+
+        });
+    </script>
+
 </body>
 </html>

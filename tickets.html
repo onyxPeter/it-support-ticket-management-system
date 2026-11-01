@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Desk | Support Tickets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">IT</div>
+            <div>
+                <h2>IT Desk</h2>
+                <span>Support Management</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <p class="nav-label">WORKSPACE</p>
+
+            <a href="index.html" class="nav-link">
+                <span>▦</span> Overview
+            </a>
+
+            <a href="tickets.html" class="nav-link active">
+                <span>▤</span> Tickets
+            </a>
+
+            <p class="nav-label">MANAGEMENT</p>
+
+            <a href="technicians.html" class="nav-link">
+                <span>♙</span> Technicians
+            </a>
+
+            <a href="assets.html" class="nav-link">
+                <span>▣</span> Assets
+            </a>
+
+            <a href="reports.html" class="nav-link">
+                <span>▥</span> Reports
+            </a>
+
+            <p class="nav-label">SYSTEM</p>
+
+            <a href="#" class="nav-link">
+                <span>⚙</span> Settings
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="profile-avatar">AD</div>
+            <div class="profile-info">
+                <strong>Administrator</strong>
+                <span>System Admin</span>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <p class="breadcrumb">Workspace / Tickets</p>
+                <h1>Support Tickets</h1>
+            </div>
+
+            <div class="topbar-right">
+
+                <span class="system-status">
+                    <span class="status-dot"></span>
+                    System operational
+                </span>
+
+                <div class="topbar-avatar">AD</div>
+
+            </div>
+
+        </header>
+
+
+        <section class="dashboard-content">
+
+            <!-- PAGE INTRODUCTION -->
+            <div class="welcome-section">
+
+                <div>
+                    <h2>Ticket Management</h2>
+                    <p>
+                        Create, assign, track, and resolve technical support requests.
+                    </p>
+                </div>
+
+                <button class="primary-button" id="newTicketButton">
+                    + New Ticket
+                </button>
+
+            </div>
+
+
+            <!-- TICKET CREATION FORM -->
+            <section class="form-section" id="ticketFormSection">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Create a Support Ticket</h2>
+                        <p>Provide details about the technical issue.</p>
+                    </div>
+                </div>
+
+                <form id="ticketForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="employeeName">Employee Name</label>
+                            <input
+                                type="text"
+                                id="employeeName"
+                                placeholder="Enter employee name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="issueTitle">Issue Title</label>
+                            <input
+                                type="text"
+                                id="issueTitle"
+                                placeholder="e.g. Wi-Fi is not working"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Issue Category</label>
+
+                            <select id="category" required>
+                                <option value="">Select category</option>
+                                <option value="Networking">Networking</option>
+                                <option value="Hardware">Hardware</option>
+                                <option value="Software">Software</option>
+                                <option value="Account Access">Account Access</option>
+                                <option value="Printer">Printer</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority">Priority</label>
+
+                            <select id="priority" required>
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                                <option value="Critical">Critical</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Problem Description</label>
+
+                        <textarea
+                            id="description"
+                            rows="4"
+                            placeholder="Explain what happened..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="primary-button">
+                        Submit Ticket
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- TICKET LIST -->
+            <section class="tickets-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>All Support Tickets</h2>
+                        <p>
+                            Search, filter, assign, and monitor submitted requests.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH AND PRIORITY FILTER -->
+                <div class="ticket-toolbar">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search by ticket title, ID, or employee..."
+                    >
+
+                    <select id="priorityFilter">
+                        <option value="All">All Priorities</option>
+                        <option value="Critical">Critical Priority</option>
+                        <option value="High">High Priority</option>
+                        <option value="Medium">Medium Priority</option>
+                        <option value="Low">Low Priority</option>
+                    </select>
+
+                </div>
+
+
+                <!-- STATUS FILTERS -->
+                <div class="ticket-filters">
+
+                    <button class="filter-btn active" data-filter="All">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="Open">
+                        Open
+                    </button>
+
+                    <button class="filter-btn" data-filter="In Progress">
+                        In Progress
+                    </button>
+
+                    <button class="filter-btn" data-filter="Resolved">
+                        Resolved
+                    </button>
+
+                </div>
+
+
+                <!-- TICKET TABLE -->
+                <div id="ticketsContainer">
+
+                    <p id="emptyMessage">
+                        No tickets submitted yet.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer>
+                IT Desk Management System · Portfolio Project
+            </footer>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- TICKET DETAILS MODAL -->
+<div class="modal-overlay" id="ticketModal">
+
+    <div class="ticket-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <span class="modal-label">TICKET DETAILS</span>
+                <h2 id="modalTicketTitle">Ticket Title</h2>
+            </div>
+
+            <button class="close-modal" id="closeModal">
+                &times;
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <!-- TICKET INFORMATION -->
+            <div class="modal-info-grid">
+
+                <div class="modal-info">
+                    <span>Ticket ID</span>
+                    <strong id="modalTicketId"></strong>
+                </div>
+
+                <div class="modal-info">
+                    <span>Employee</span>
+                    <strong id="modalEmployee"></strong>
+                </div>
+
+                <div class="modal-info">
+                    <span>Category</span>
+                    <strong id="modalCategory"></strong>
+                </div>
+
+                <div class="modal-info">
+                    <span>Priority</span>
+                    <strong id="modalPriority"></strong>
+                </div>
+
+                <div class="modal-info">
+                    <span>Status</span>
+                    <strong id="modalStatus"></strong>
+                </div>
+
+                <div class="modal-info">
+                    <span>Date Submitted</span>
+                    <strong id="modalDate"></strong>
+                </div>
+
+                <div class="modal-info">
+                    <span>Assigned Technician</span>
+                    <strong id="modalAssignedTechnician">Unassigned</strong>
+                </div>
+
+                <div class="modal-info">
+                    <span>SLA Status</span>
+                    <strong id="modalSlaStatus">Not available</strong>
+                </div>
+
+                <div class="modal-info">
+                    <span>SLA Deadline</span>
+                    <strong id="modalSlaDeadline">Not available</strong>
+                </div>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+            <div class="modal-description">
+
+                <h3>Issue Description</h3>
+
+                <p id="modalDescription"></p>
+
+            </div>
+
+
+            <!-- ACTIVITY HISTORY -->
+            <div class="modal-activity">
+
+                <h3>Ticket Activity</h3>
+
+                <div id="activityTimeline" class="activity-timeline">
+                    <p>No activity recorded yet.</p>
+                </div>
+
+            </div>
+
+
+            <!-- TECHNICIAN COMMENTS -->
+            <div class="modal-comments">
+
+                <h3>Technician Comments</h3>
+
+                <div id="commentsContainer" class="comments-container">
+                    <p>No comments yet.</p>
+                </div>
+
+                <form id="commentForm">
+
+                    <textarea
+                        id="commentInput"
+                        placeholder="Write a technician update..."
+                        required
+                    ></textarea>
+
+                    <button type="submit">
+                        Add Comment
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button id="closeModalFooter">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT MODULES -->
+<script src="js/storage.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/tickets.js"></script>
+<script src="js/notifications.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        window.Dashboard.initialize();
+
+        window.TicketManager.initialize();
+
+        window.NotificationManager.initialize();
+
+        const newTicketButton = document.getElementById("newTicketButton");
+
+        if (newTicketButton) {
+            newTicketButton.addEventListener("click", () => {
+
+                const ticketFormSection = document.getElementById(
+                    "ticketFormSection"
+                );
+
+                ticketFormSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            });
+        }
+
+        if (window.location.hash === "#new-ticket") {
+
+            const ticketFormSection = document.getElementById(
+                "ticketFormSection"
+            );
+
+            ticketFormSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+    });
+</script>
+
+</body>
+</html>
